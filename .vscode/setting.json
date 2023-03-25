@@ -1,0 +1,16 @@
+{
+    "jenkins-runner.jobs": {
+        "test-1": {
+            "isDefault": true,
+            "runWith": "jenkins-master",
+            "name": "gitops-argocd-ci",
+    }
+},
+    "jenkins-runner.hostConfigs": {
+        "jenkins-master": {
+            "url": "http://localhost:8080",
+            "username": "cristiano-roanldo",
+            "password": "suuuuuuuuuuuuuuuu"
+        }
+    }
+}
