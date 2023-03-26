@@ -1,6 +1,6 @@
 FROM python:3.7.3-alpine3.9
 RUN pip install flask
-Workdir /app
+WORKDIR /app
 COPY app.py .
 EXPOSE 5000
 
