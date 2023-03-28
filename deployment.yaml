@@ -1,8 +1,9 @@
-apiVersion: v1
-kind: Deployment
-metadata:
-  name: flask-app-deploy
+apiVersion: v1 
+kind : Deployment 
+metadata :
+  name: flask-app
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: flask-app
@@ -12,7 +13,7 @@ spec:
         app: flask-app
     spec:
       containers:
-      - name: flask-app
+      - name: flask-app-container
         image: holiodin/jenkins-gitops-argocd
         resources:
           limits:
@@ -20,17 +21,16 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 5000
-
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name:  Service Name
+  name:  flask-app-expose
 spec:
-  selector:
-    app:  Selector Label
-  type:  LoadBalancer 
+  type: LoadBalancer
   ports:
-  - port:  80
-    targetPort:  5000
+  - port: 80
+    targetPort: 5000
     nodePort: 32000
+  selector:
+    app: flask-app
